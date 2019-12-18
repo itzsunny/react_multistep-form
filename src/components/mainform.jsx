@@ -14,7 +14,16 @@ class MainForm extends React.Component {
       step: 1,
       username: "",
       email: "",
-      password: ""
+      password: "",
+      fullname:"",
+      country:"",
+      gender:"",
+      aboutyou:"",
+      paymenttype:"",
+      creditcard:"",
+      expirationdate:"",
+      nameoncard:""
+
     };
   }
 
@@ -30,8 +39,9 @@ class MainForm extends React.Component {
     }
   };
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value});
+    
   };
 
   handleView = userInfo => {
@@ -54,7 +64,16 @@ class MainForm extends React.Component {
     let userInfo = {
       username: this.state.username,
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      fullname:this.props.fullname,
+      country:this.props.country,
+      gender:this.props.gender,
+      aboutyou:this.props.aboutyou,
+      paymenttype:this.props.paymenttype,
+      creditcard:this.props.creditcard,
+      expirationdate:this.props.expirationdate,
+      nameoncard:this.state.nameoncard
+
     };
     return (
       <main className="main">
@@ -64,6 +83,7 @@ class MainForm extends React.Component {
           nextStep={this.nextStep}
           prevStep={this.prevStep}
           step={this.state.step}
+          info={userInfo}
         />
       </main>
     );
