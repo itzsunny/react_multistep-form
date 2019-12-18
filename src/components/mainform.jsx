@@ -4,12 +4,17 @@ import React from "react";
 import Header from "./header";
 import Footer from "./footer";
 import Step1 from "./steps/step1";
+import Step2 from "./steps/step2";
+import Step3 from "./steps/step3";
 
 class MainForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      step: 1
+      step: 1,
+      username: "",
+      email: "",
+      password: ""
     };
   }
 
@@ -25,29 +30,36 @@ class MainForm extends React.Component {
     }
   };
 
-  handleChange = event => {};
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
-  handleView = () => {
+  handleView = userInfo => {
     switch (this.state.step) {
       case 1:
-        return <Step1 />;
+        return <Step1 handleChange={this.handleChange} info={userInfo} />;
 
       case 2:
-        return <h1>step2</h1>;
+        return <Step2 handleChange={this.handleChange} info={userInfo} />;
 
       case 3:
-        return <h1>step3</h1>;
+        return <Step3 handleChange={this.handleChange} info={userInfo} />;
 
       default:
-        return <h1>no steps</h1>;
+        return <Step1 />;
     }
   };
 
   render() {
+    let userInfo = {
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password
+    };
     return (
       <main className="main">
-        <Header />
-        {this.handleView()}
+        <Header step={this.state.step} />
+        {this.handleView(userInfo)}
         <Footer
           nextStep={this.nextStep}
           prevStep={this.prevStep}

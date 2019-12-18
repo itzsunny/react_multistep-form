@@ -29,8 +29,8 @@
   border-radius: 50%;
   margin: 0 .5rem;
   font-size: .9rem;
-  color: rgba(0,0,0,.8);
-  border: 2px solid rgba(0,0,0,.5);
+  color: rgba(0,0,0,.4);
+  border: 2px solid rgba(0,0,0,.3);
 }
 .acc_info_1 {
   width:35%;
@@ -44,6 +44,15 @@
 .personal_info {
   font-size: .9rem;
   line-height: 1rem;
-  font-weight: 200;
-  color: rgba(0,0,0,.8);
+  font-weight: 400;
+  color: rgba(0,0,0,.3);
+}
+
+.numbers2{
+  color: rgba(0,0,0,1);
+  border: 2px solid rgba(0,0,0,.8);
+}
+.personal_info2{
+  color: rgba(0,0,0,1);
+
 }

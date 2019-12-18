@@ -4,7 +4,7 @@ import {IoIosPersonAdd} from 'react-icons/io';
 
 
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className="header">
       <div className="header_user_container">
@@ -12,17 +12,17 @@ const Header = () => {
         <p className="sign_up_text">Sign-up to create account</p>
       </div>
       <div className="account_information">
-        <div className="acc_info_1">
-          <p className="numbers">1</p>
-          <p className="personal_info">Account<br/>Information</p>
+        <div className="acc_info_1 ">
+          <p className="numbers numbers2">1</p>
+          <p className="personal_info personal_info2">Account<br/>Information</p>
         </div>
         <div className="acc_info_1">
-          <p className="numbers">2</p>
-          <p className="personal_info">Personal<br/>Information</p>
+          <p className={props.step > 1 ? `numbers numbers2` : `numbers`}>2</p>
+          <p className= {props.step > 1 ? `personal_info personal_info2` : `personal_info`}>Personal<br/>Information</p>
         </div>
         <div className="acc_info_1 acc_info_last">
-          <p className="numbers">3</p>
-          <p className="personal_info">Payment<br/>Information</p>
+          <p className={props.step > 2 ? `numbers numbers2` : `numbers`}>3</p>
+          <p className={props.step > 2 ? `personal_info personal_info2` : `personal_info`}>Payment<br/>Information</p>
         </div>
         <div></div>
         <div></div>
