@@ -1,0 +1,36 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top:1px solid rgba(0,0,0,.2);
+  padding: 0 .5rem;
+  padding-top: 1rem;
+  padding-bottom: .5rem;
+}
+.cancel {
+  font-weight: 100;
+  font-size: .8rem;
+  color: #0C72E1;
+  padding: .2rem 0;
+  border-bottom: 1px dotted #0C72E1;
+}
+.step_count {
+  font-size: .9rem;
+  color: rgba(0,0,0,.5);
+}
+.or {
+  padding: 0 .5rem;
+  font-weight: 100;
+  font-size: .8rem;
+  color: rgba(0,0,0,.5);
+}
+.btn_next {
+  padding: .6rem 1.2rem;
+  border-radius: .3rem;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background:#0C72E1;
+}

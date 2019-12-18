@@ -1,0 +1,49 @@
+
+.header_user_container {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+.add_user {
+  font-size: 2rem;
+  color: rgba(0,0,0,.8);
+}
+.sign_up_text {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-left: .8rem;
+  color: rgba(0,0,0,.8);
+ 
+}
+.account_information {
+  display: flex;
+  border-top: 1px dotted rgba(0,0,0,.5);
+  border-bottom: 1px dotted rgba(0,0,0,.5);
+}
+.numbers{
+  height: 2rem;
+  width:2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 .5rem;
+  font-size: .9rem;
+  color: rgba(0,0,0,.8);
+  border: 2px solid rgba(0,0,0,.5);
+}
+.acc_info_1 {
+  width:35%;
+  padding: .7rem .5rem;
+  display: flex;
+  border-right: 1px dotted rgba(0,0,0,.5);
+}
+.acc_info_last {
+  border:none;
+}
+.personal_info {
+  font-size: .9rem;
+  line-height: 1rem;
+  font-weight: 200;
+  color: rgba(0,0,0,.8);
+}
