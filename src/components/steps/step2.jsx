@@ -3,13 +3,18 @@ import React from "react";
 const Step2 = props => {
   return (
     <div className="step2_container">
-      <form className="form_step1">
+      <form className="form_step1" onSubmit={props.onSubmit} noValidate>
         <label className="label">
           <p className="input_label">Full name</p>
           <input
             type="text"
             name="fullname"
-            className="input_step1"
+            className= {
+              props.info.fullname === `Please enter your Full name!`
+                ? `input_step1 error_input`
+                : `input_step1`
+            }
+
             onChange={props.handleChange}
             value={props.info.fullname}
           />
@@ -31,8 +36,12 @@ const Step2 = props => {
         <label className="label">
           <p className="input_label">Gender</p>
           <input
-            type="password"
-            className="input_step1"
+            type="text"
+            className={
+              props.info.gender === `please select a gender`
+                ? `input_step1 error_input`
+                : `input_step1`
+            }
             name="gender"
             onChange={props.handleChange}
             value={props.info.gender}
@@ -43,7 +52,11 @@ const Step2 = props => {
           <textarea
             type="file"
             name="aboutyou"
-            className="input_step1 input_textarea"
+            className={
+              props.info.aboutyou === `please Write something about you!`
+                ? `input_step1 input_textarea error_input`
+                : `input_step1 input_textarea input_textarea`
+            }
             onChange={props.handleChange}
             value={props.info.aboutyou}
           ></textarea>

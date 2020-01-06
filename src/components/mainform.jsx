@@ -12,18 +12,17 @@ class MainForm extends React.Component {
     super();
     this.state = {
       step: 1,
-      username: "",
-      email: "",
-      password: "",
-      fullname:"",
-      country:"",
-      gender:"",
-      aboutyou:"",
-      paymenttype:"",
-      creditcard:"",
-      expirationdate:"",
-      nameoncard:""
-
+      username: null,
+      email: null,
+      password: null,
+      fullname: null,
+      country: null,
+      gender: null,
+      aboutyou: null,
+      paymenttype: null,
+      creditcard: null,
+      expirationdate: null,
+      nameoncard: null
     };
   }
 
@@ -39,21 +38,91 @@ class MainForm extends React.Component {
     }
   };
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value});
-    
+  errorHandling = () => {
+    if (this.state.step === 1) {
+      if (
+        this.state.username &&
+        this.state.email &&
+        this.state.email.includes("@") &&
+        this.state.password
+      ) {
+        this.nextStep();
+      }
+      if (!this.state.username) {
+        this.setState({ username: "user name can't be empty!" });
+      }
+      if (!this.state.email) {
+        this.setState({ email: "Email can't be empty!" });
+      }
+      if (this.state.email && !this.state.email.includes("@")) {
+        this.setState({ email: "Invalid Email format!" });
+      }
+      if (!this.state.password) {
+        this.setState({ password: "Password can't be empty!" });
+      }
+    } else if (this.state.step === 2) {
+      if (
+        this.state.fullname &&
+        this.state.country &&
+        this.state.gender &&
+        this.state.aboutyou
+      ) {
+        this.nextStep();
+      }
+      if (!this.state.fullname) {
+        this.setState({ fullname: "Please enter your Full name!" });
+      }
+      if (!this.state.gender) {
+        this.setState({ gender: "please select a gender" });
+      }
+      if (!this.state.aboutyou) {
+        this.setState({ aboutyou: "please Write something about you!" });
+      }
+    } else if (this.state.step === 3)
+      if (
+        this.state.paymenttype &&
+        this.state.creditcard &&
+        this.state.expirationdate &&
+        this.state.nameoncard
+      ) {
+        this.nextStep();
+      } else {
+        alert("please fill up gently");
+      }
   };
 
-  handleView = userInfo => {
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleView = () => {
     switch (this.state.step) {
       case 1:
-        return <Step1 handleChange={this.handleChange} info={userInfo} />;
+        return (
+          <Step1
+            handleChange={this.handleChange}
+            info={this.state}
+            error={this.state.err}
+          />
+        );
 
       case 2:
-        return <Step2 handleChange={this.handleChange} info={userInfo} />;
+        return (
+          <Step2
+            handleChange={this.handleChange}
+            info={this.state}
+            error={this.state.err}
+          />
+        );
 
       case 3:
-        return <Step3 handleChange={this.handleChange} info={userInfo} />;
+        return (
+          <Step3
+            handleChange={this.handleChange}
+            info={this.state}
+            error={this.state.err}
+          />
+        );
 
       default:
         return <Step1 />;
@@ -61,31 +130,21 @@ class MainForm extends React.Component {
   };
 
   render() {
-    let userInfo = {
-      username: this.state.username,
-      email: this.state.email,
-      password: this.state.password,
-      fullname:this.props.fullname,
-      country:this.props.country,
-      gender:this.props.gender,
-      aboutyou:this.props.aboutyou,
-      paymenttype:this.props.paymenttype,
-      creditcard:this.props.creditcard,
-      expirationdate:this.props.expirationdate,
-      nameoncard:this.state.nameoncard
-
-    };
     return (
-      <main className="main">
-        <Header step={this.state.step} />
-        {this.handleView(userInfo)}
-        <Footer
-          nextStep={this.nextStep}
-          prevStep={this.prevStep}
-          step={this.state.step}
-          info={userInfo}
-        />
-      </main>
+      <>
+        <p className="form_title">Simplicity Clean Multi-step Sign-up Form</p>
+        <main className="main">
+          <Header step={this.state.step} />
+          {this.handleView()}
+          <Footer
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            step={this.state.step}
+            info={this.state}
+            errorHandling={this.errorHandling}
+          />
+        </main>
+      </>
     );
   }
 }

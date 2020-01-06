@@ -3,7 +3,7 @@ import React from 'react';
 const Step3 = (props) => {
   return (
     <section className="step1_container">
-    <form className="form_step1">
+    <form className="form_step1" onSubmit={props.onSubmit} noValidate>
       <label className="label">
         <p className="input_label">Payment type</p>
         <input type="text" className="input_step1" 
@@ -20,7 +20,7 @@ const Step3 = (props) => {
       </label>
       <label className="label">
         <p className="input_label">Expiration date</p>
-        <input type="month" className="input_step1"
+        <input type="date" className="input_step1"
          name="expirationdate"
          onChange={props.handleChange}
          value={props.info.expirationdate}/> 
